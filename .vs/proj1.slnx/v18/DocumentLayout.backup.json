@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\dtos\\relationsdtos\\relationscreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\dtos\\relationsdtos\\relationscreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\dtos\\relationsdtos\\relationsreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\dtos\\relationsdtos\\relationsreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\dtos\\relationsdtos\\relationsupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\dtos\\relationsdtos\\relationsupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 191,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RelationsUpdateDto.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
+              "RelativeDocumentMoniker": "proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
+              "RelativeToolTip": "proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T06:42:08.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RelationsReadDto.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
+              "RelativeDocumentMoniker": "proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
+              "RelativeToolTip": "proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T06:42:07.927Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RelationsCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
+              "RelativeDocumentMoniker": "proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
+              "RelativeToolTip": "proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T06:42:07.21Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

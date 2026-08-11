@@ -2,7 +2,7 @@
 
 namespace proj1.Dtos.PersonDtos
 {
-    public class PersonReadDto
+    public class PersonReadDto : BaseDtoSoftDelete
     {
         public int Id { get; set; }
         public int FamilyId { get; set; }
@@ -14,6 +14,6 @@ namespace proj1.Dtos.PersonDtos
         public string? Surname { get; set; }
         public int Age { get; set; }
         public DateOnly Born { get; set; }
-        public bool IsDeleted { get; set; }
+         
     }
 }

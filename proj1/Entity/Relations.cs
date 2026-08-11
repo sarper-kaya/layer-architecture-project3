@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace proj1.Entity
 {
-    public class Relations
+    public class Relations : BaseEntitySoftDelete
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,9 +13,6 @@ namespace proj1.Entity
         public int MainPersonId { get; set; }
         public Person? Person { get; set; }
         public int RelationsWith { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateOnly DelatedAt { get; set; }
-        public int DeletedBy { get; set; }
 
 
     }

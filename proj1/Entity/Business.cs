@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace proj1.Entity
 {
-    public class Business
+    public class Business : BaseEntitySoftDelete
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -13,9 +13,6 @@ namespace proj1.Entity
         public string? CompName { get; set; }
         public string? Occupation   { get; set; }
         public bool IsWorking { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateOnly DelatedAt { get; set; }
-        public int DeletedBy { get; set; }
         public ICollection<Person> Persons { get; set; } = new System.Collections.Generic.List<Person>();
 
 

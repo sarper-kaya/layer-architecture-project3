@@ -2,7 +2,7 @@
 
 namespace proj1.Dtos.PersonDtos
 {
-    public class PersonCreateDto
+    public class PersonCreateDto : BaseDtoSoftDelete
     {
         public int FamilyId { get; set; }
         public Family Family { get; set; } = null!; // required olabilir
@@ -13,8 +13,8 @@ namespace proj1.Dtos.PersonDtos
         public string? Surname { get; set; }
         public int Age { get; set; }
         public DateOnly Born { get; set; }
-        public bool IsDeleted { get; set; }
-        public DateOnly DelatedAt { get; set; }
-        public int DeletedBy { get; set; }
+         
+         
+         
     }
 }
