@@ -1,0 +1,14 @@
+## Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+## Build Folders
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
