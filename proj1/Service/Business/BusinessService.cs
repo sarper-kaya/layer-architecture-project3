@@ -1,16 +1,17 @@
 ﻿using AutoMapper;
 using proj1.Core;
 using proj1.Dtos.BusinessDtos;
-using proj1.Repos;
+
+using proj1.Repos.BusinessRepos;
 
 namespace proj1.Service.Business
 {
     public class BusinessService : IBusinessService
     {
-        private readonly IRepos<Entity.Business> _businessRepository;
+        private readonly IBusinessRepo _businessRepository;
         private readonly IMapper _mapper;
 
-        public BusinessService(IRepos<Entity.Business> businessRepository, IMapper mapper)
+        public BusinessService(IBusinessRepo businessRepository, IMapper mapper)
         {
             _businessRepository = businessRepository;
             _mapper = mapper;

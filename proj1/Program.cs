@@ -1,13 +1,17 @@
 using Microsoft.EntityFrameworkCore;
-using proj1.Data;
-using proj1.Repos;
-using proj1.Entity;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
+using proj1.Data;
+using proj1.Entity;
+using proj1.Repos;
+using proj1.Repos.BusinessRepos;
+using proj1.Repos.FamilyRepos;
+using proj1.Repos.PersonRepos;
+using proj1.Repos.RelationsRepos;
 using proj1.Service;
-using proj1.Service.Person;
-using proj1.Service.Family;
 using proj1.Service.Business;
+using proj1.Service.Family;
+using proj1.Service.Person;
 using proj1.Service.Relations;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,11 +30,10 @@ builder.Services.AddAutoMapper(cfg =>
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped(typeof(IRepos<>), typeof(Repository<>));
-builder.Services.AddScoped<IPersonService, PersonServices>();
-builder.Services.AddScoped<IFamilyService, FamilyService>();
-builder.Services.AddScoped<IBusinessService, BusinessService>();
-builder.Services.AddScoped<IRelationsServices, RelationsServices>();
+builder.Services.AddScoped<IPersonRepo, PersonRepository>();
+builder.Services.AddScoped<IBusinessRepo, BusinessRepository>();
+builder.Services.AddScoped<IFamilyRepo, FamilyRepository>();
+builder.Services.AddScoped<IRelationsRepo, RelationsRepository>();
 
 var app = builder.Build();
 

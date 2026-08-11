@@ -2,15 +2,16 @@
 using proj1.Core;
 using proj1.Dtos.FamiliyDtos;
 using proj1.Repos;
+using proj1.Repos.FamilyRepos;
 
 namespace proj1.Service.Family
 {
     public class FamilyService : IFamilyService
     {
-        private readonly IRepos<Entity.Family> _familyRepository;
+        private readonly IFamilyRepo _familyRepository;
         public readonly IMapper _mapper;
 
-        public FamilyService(IRepos<Entity.Family> familyRepository, IMapper mapper)
+        public FamilyService(IFamilyRepo familyRepository, IMapper mapper)
         {
             _familyRepository = familyRepository;
             _mapper = mapper;

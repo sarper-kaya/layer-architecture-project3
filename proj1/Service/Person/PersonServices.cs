@@ -3,13 +3,14 @@ using proj1.Core;
 using proj1.Dtos.PersonDtos;
 using proj1.Entity;
 using proj1.Repos;
+using proj1.Repos.PersonRepos;
 namespace proj1.Service.Person
 {
     public class PersonServices : IPersonService
     {
-        private readonly IRepos<Entity.Person> _personRepository;
+        private readonly IPersonRepo _personRepository;
         private readonly IMapper _mapper;
-        public PersonServices(IRepos<Entity.Person> personRepository, IMapper mapper)
+        public PersonServices(IPersonRepo personRepository, IMapper mapper)
         {
             _personRepository = personRepository;
             _mapper = mapper;

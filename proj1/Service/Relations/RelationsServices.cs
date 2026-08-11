@@ -2,15 +2,16 @@
 using proj1.Core;
 using proj1.Dtos.RelationsDtos;
 using proj1.Repos;
+using proj1.Repos.RelationsRepos;
 
 namespace proj1.Service.Relations
 {
     public class RelationsServices : IRelationsServices
     {
-        private readonly IRepos<Entity.Relations> _relationsRepository;
+        private readonly IRelationsRepo _relationsRepository;
         private readonly IMapper _mapper;
 
-        public RelationsServices(IRepos<Entity.Relations> relationsRepository, IMapper mapper)
+        public RelationsServices(IRelationsRepo relationsRepository, IMapper mapper)
         {
             _relationsRepository = relationsRepository;
             _mapper = mapper;
