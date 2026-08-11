@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using proj1.Core;
 using proj1.Dtos.RelationsDtos;
 using proj1.Repos;
 
@@ -15,41 +16,56 @@ namespace proj1.Service.Relations
             _mapper = mapper;
         }
 
-        public async Task<RelationsReadDto> CreateAsync(RelationsCreateDto relationDto)
+        public async Task<ServiceResult<RelationsReadDto>> CreateAsync(RelationsCreateDto relationDto)
         {
             var newRelation = _mapper.Map<Entity.Relations>(relationDto);
             var savedRelation = await _relationsRepository.AddAsync(newRelation);
-            return _mapper.Map<RelationsReadDto>(savedRelation);
+            var dto = _mapper.Map<RelationsReadDto>(savedRelation);
+            return ServiceResult<RelationsReadDto>.SuccessResult(dto, StatusCodes.Status201Created);
         }
 
-        
-
-        public async Task<IEnumerable<RelationsReadDto>> GetAllAsync()
+        public async Task<ServiceResult<IEnumerable<RelationsReadDto>>> GetAllAsync()
         {
             var relations = await _relationsRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<RelationsReadDto>>(relations);
+            var dtos = _mapper.Map<IEnumerable<RelationsReadDto>>(relations);
+            return ServiceResult<IEnumerable<RelationsReadDto>>.SuccessResult(dtos);
         }
 
-        public async Task<RelationsReadDto?> GetByIdAsync(int id)
+        public async Task<ServiceResult<RelationsReadDto>> GetByIdAsync(int id)
         {
             var relation = await _relationsRepository.GetByIdAsync(id);
-            return _mapper.Map<RelationsReadDto?>(relation);
+            if (relation == null)
+            {
+                return ServiceResult<RelationsReadDto>.FailResult("Relation not found", StatusCodes.Status404NotFound);
+            }
+
+            var dto = _mapper.Map<RelationsReadDto>(relation);
+            return ServiceResult<RelationsReadDto>.SuccessResult(dto);
         }
 
-        public async Task<bool> UpdateAsync(int id, RelationsUpdateDto personDto)
+        public async Task<ServiceResult<bool>> UpdateAsync(int id, RelationsUpdateDto relationDto)
         {
-            var relation = _relationsRepository.GetByIdAsync(id).Result;
-            if (relation == null) throw new ArgumentException("Relation not found");
-            _mapper.Map(personDto, relation);
+            var relation = await _relationsRepository.GetByIdAsync(id);
+            if (relation == null)
+            {
+                return ServiceResult<bool>.FailResult("Relation not found", StatusCodes.Status404NotFound);
+            }
+
+            _mapper.Map(relationDto, relation);
             await _relationsRepository.Update(relation);
-            return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
-        public async Task<bool> DeleteAsync(int id)
+
+        public async Task<ServiceResult<bool>> DeleteAsync(int id)
         {
             var relation = await _relationsRepository.GetByIdAsync(id);
-            if (relation == null) throw new ArgumentException("Relation not found");
+            if (relation == null)
+            {
+                return ServiceResult<bool>.FailResult("Relation not found", StatusCodes.Status404NotFound);
+            }
+
             await _relationsRepository.Delete(relation);
-            return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
     }
 }

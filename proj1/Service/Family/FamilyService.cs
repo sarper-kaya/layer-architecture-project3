@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using proj1.Core;
 using proj1.Dtos.FamiliyDtos;
 using proj1.Repos;
 
@@ -7,50 +8,64 @@ namespace proj1.Service.Family
     public class FamilyService : IFamilyService
     {
         private readonly IRepos<Entity.Family> _familyRepository;
-
         public readonly IMapper _mapper;
+
         public FamilyService(IRepos<Entity.Family> familyRepository, IMapper mapper)
         {
             _familyRepository = familyRepository;
-
             _mapper = mapper;
         }
-        public async Task<IEnumerable<FamilyReadDto>> GetAllAsync()
+
+        public async Task<ServiceResult<IEnumerable<FamilyReadDto>>> GetAllAsync()
         {
             var families = await _familyRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<FamilyReadDto>>(families);
+            var dtos = _mapper.Map<IEnumerable<FamilyReadDto>>(families);
+            return ServiceResult<IEnumerable<FamilyReadDto>>.SuccessResult(dtos);
         }
 
-        public async Task<FamilyReadDto?> GetByIdAsync(int id)
+        public async Task<ServiceResult<FamilyReadDto>> GetByIdAsync(int id)
         {
             var family = await _familyRepository.GetByIdAsync(id);
-            return _mapper.Map<FamilyReadDto>(family);
+            if (family == null)
+            {
+                return ServiceResult<FamilyReadDto>.FailResult("Family not found", StatusCodes.Status404NotFound);
+            }
+
+            var dto = _mapper.Map<FamilyReadDto>(family);
+            return ServiceResult<FamilyReadDto>.SuccessResult(dto);
         }
 
-        public async Task<FamilyReadDto> CreateAsync(FamilyCreateDto familyDto)
+        public async Task<ServiceResult<FamilyReadDto>> CreateAsync(FamilyCreateDto familyDto)
         {
             var newFamily = _mapper.Map<Entity.Family>(familyDto);
             var savedFamily = await _familyRepository.AddAsync(newFamily);
-            return _mapper.Map<FamilyReadDto>(savedFamily);
+            var dto = _mapper.Map<FamilyReadDto>(savedFamily);
+            return ServiceResult<FamilyReadDto>.SuccessResult(dto, StatusCodes.Status201Created);
         }
 
-        public async Task<bool> UpdateAsync(int id, FamilyUpdateDto familyDto)
+        public async Task<ServiceResult<bool>> UpdateAsync(int id, FamilyUpdateDto familyDto)
         {
             var family = await _familyRepository.GetByIdAsync(id);
-            if (family == null) throw new ArgumentException("Family not found"); ;
+            if (family == null)
+            {
+                return ServiceResult<bool>.FailResult("Family not found", StatusCodes.Status404NotFound);
+            }
 
             _mapper.Map(familyDto, family);
             await _familyRepository.Update(family);
-            return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<ServiceResult<bool>> DeleteAsync(int id)
         {
             var family = await _familyRepository.GetByIdAsync(id);
-            if (family == null) throw new ArgumentException("Family not found"); ;
+            if (family == null)
+            {
+                return ServiceResult<bool>.FailResult("Family not found", StatusCodes.Status404NotFound);
+            }
 
             await _familyRepository.Delete(family);
-            return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
 
 

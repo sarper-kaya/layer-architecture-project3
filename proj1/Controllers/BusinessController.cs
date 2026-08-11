@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using proj1.Dtos.BusinessDtos;
+using proj1.Dtos.CustomResponseDtos;
 using proj1.Entity;
 using proj1.Service;
 using proj1.Service.Business;
@@ -18,42 +19,43 @@ namespace proj1.Controllers
             _businessService = businessService;
         }
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Business>>> GetAll()
+        public async Task<ActionResult<ApiResponse<IEnumerable<BusinessReadDto>>>> GetAll()
         {
-            var list = await _businessService.GetAllAsync();
-            return Ok(list);
+            var result = await _businessService.GetAllAsync();
+            var response = new ApiResponse<IEnumerable<BusinessReadDto>>(result.Data, result.Message, result.Success, result.StatusCode);
+            return StatusCode(result.StatusCode, response);
         }
+
         [HttpGet("{id}")]
-        public async Task<ActionResult<Business>> Get(int id)
+        public async Task<ActionResult<ApiResponse<BusinessReadDto>>> Get(int id)
         {
-            var business = await _businessService.GetByIdAsync(id);
-            if (business == null)
-            {
-                return NotFound();
-            }
-            return Ok(business);
+            var result = await _businessService.GetByIdAsync(id);
+            var response = new ApiResponse<BusinessReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
+            return StatusCode(result.StatusCode, response);
         }
+
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] BusinessCreateDto business)
+        public async Task<ActionResult<ApiResponse<BusinessReadDto>>> Post([FromBody] BusinessCreateDto business)
         {
-            var createdBusiness = await _businessService.CreateAsync(business);
-            return CreatedAtAction(nameof(Get), new { id = createdBusiness.Id }, createdBusiness);
+            var result = await _businessService.CreateAsync(business);
+            var response = new ApiResponse<BusinessReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
+            return StatusCode(result.StatusCode, response);
         }
+
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(int id, [FromBody] BusinessUpdateDto business)
+        public async Task<ActionResult<ApiResponse<bool>>> Put(int id, [FromBody] BusinessUpdateDto business)
         {
-            var updatedBusiness = await _businessService.UpdateAsync(id, business);
-            if (updatedBusiness == null)
-            {
-                return NotFound();
-            }
-            return Ok(updatedBusiness);
+            var result = await _businessService.UpdateAsync(id, business);
+            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            return StatusCode(result.StatusCode, response);
         }
+
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult<ApiResponse<bool>>> Delete(int id)
         {
-            await _businessService.DeleteAsync(id);
-            return NoContent();
+            var result = await _businessService.DeleteAsync(id);
+            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            return StatusCode(result.StatusCode, response);
         }
     }
 

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using proj1.Core;
 using proj1.Dtos.PersonDtos;
 using proj1.Entity;
 using proj1.Repos;
@@ -14,45 +15,57 @@ namespace proj1.Service.Person
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<PersonReadDto>> GetAllAsync()
+        public async Task<ServiceResult<IEnumerable<PersonReadDto>>> GetAllAsync()
         {
             var persons = await _personRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<PersonReadDto>>(persons);
+
+            return ServiceResult<IEnumerable<PersonReadDto>>.SuccessResult(_mapper.Map<IEnumerable<PersonReadDto>>(persons));
         }
 
 
-        public async Task<PersonReadDto?> GetByIdAsync(int id)
+        public async Task<ServiceResult<PersonReadDto>> GetByIdAsync(int id)
         {
             var person = await _personRepository.GetByIdAsync(id);
-            return _mapper.Map<PersonReadDto?>(person);
+            if (person == null)
+            {
+                return ServiceResult<PersonReadDto>.FailResult("Person not found", StatusCodes.Status404NotFound);
+            }
+
+            var dto = _mapper.Map<PersonReadDto>(person);
+            return ServiceResult<PersonReadDto>.SuccessResult(dto);
         }
 
-        public async Task<PersonReadDto> CreateAsync(PersonCreateDto personDto)
+        public async Task<ServiceResult<PersonReadDto>> CreateAsync(PersonCreateDto personDto)
         {
             var newPerson = _mapper.Map<Entity.Person>(personDto);
             var savedPerson = await _personRepository.AddAsync(newPerson);
-            return _mapper.Map<PersonReadDto>(savedPerson);
+            if (savedPerson == null) 
+            { 
+                return ServiceResult<PersonReadDto>.FailResult("Failed to create person", StatusCodes.Status500InternalServerError);
+            }
+            return ServiceResult<PersonReadDto>.SuccessResult(_mapper.Map<PersonReadDto>(savedPerson));
         }
 
 
-        public async Task<bool> UpdateAsync(int id, PersonUpdateDto dto)
+        public async Task<ServiceResult<bool>> UpdateAsync(int id, PersonUpdateDto dto)
         {
             var entity = await _personRepository.GetByIdAsync(id);
-            if (entity is null) return false;
+            if (entity is null) return ServiceResult<bool>.FailResult("Person not found", StatusCodes.Status404NotFound);
 
             _mapper.Map(dto, entity);
             //return await _personRepository.Update(entity);
-            return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<ServiceResult<bool>> DeleteAsync(int id)
         {
             var person = await _personRepository.GetByIdAsync(id);
-            if (person == null) throw new ArgumentException("Person not found");
-
+            if (person == null) return ServiceResult<bool>.FailResult("Person not found", StatusCodes.Status404NotFound);
 
             //return await _personRepository.Delete(person);
-            return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
+
+    
     }
 }

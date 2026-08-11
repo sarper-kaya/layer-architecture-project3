@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using proj1.Core;
 using proj1.Dtos.BusinessDtos;
 using proj1.Repos;
 
@@ -15,44 +16,55 @@ namespace proj1.Service.Business
             _mapper = mapper;
         }
 
-        public async Task<BusinessReadDto> CreateAsync(BusinessCreateDto businessDto)
+        public async Task<ServiceResult<BusinessReadDto>> CreateAsync(BusinessCreateDto businessDto)
         {
             var newBusiness = _mapper.Map<Entity.Business>(businessDto);
             var savedBusiness = await _businessRepository.AddAsync(newBusiness);
-            return _mapper.Map<BusinessReadDto>(savedBusiness);
+            var dto = _mapper.Map<BusinessReadDto>(savedBusiness);
+            return ServiceResult<BusinessReadDto>.SuccessResult(dto, StatusCodes.Status201Created);
         }
-
-        
-
-        public async Task<IEnumerable<BusinessReadDto>> GetAllAsync()
+        public async Task<ServiceResult<IEnumerable<BusinessReadDto>>> GetAllAsync()
         {
             var businesses = await _businessRepository.GetAllAsync();
-            return _mapper.Map<IEnumerable<BusinessReadDto>>(businesses);
+            var dtos = _mapper.Map<IEnumerable<BusinessReadDto>>(businesses);
+            return ServiceResult<IEnumerable<BusinessReadDto>>.SuccessResult(dtos);
         }
 
-
-        public async Task<BusinessReadDto?> GetByIdAsync(int id)
+        public async Task<ServiceResult<BusinessReadDto>> GetByIdAsync(int id)
         {
             var business = await _businessRepository.GetByIdAsync(id);
-            return _mapper.Map<BusinessReadDto?>(business);
+            if (business == null)
+            {
+                return ServiceResult<BusinessReadDto>.FailResult("Business not found", StatusCodes.Status404NotFound);
+            }
+
+            var dto = _mapper.Map<BusinessReadDto>(business);
+            return ServiceResult<BusinessReadDto>.SuccessResult(dto);
         }
 
-        public async Task<bool> UpdateAsync(int id, BusinessUpdateDto personDto)
+        public async Task<ServiceResult<bool>> UpdateAsync(int id, BusinessUpdateDto businessDto)
         {
             var business = await _businessRepository.GetByIdAsync(id);
-            if (business == null) throw new ArgumentException("Business not found");
-            _mapper.Map(personDto, business);
+            if (business == null)
+            {
+                return ServiceResult<bool>.FailResult("Business not found", StatusCodes.Status404NotFound);
+            }
+
+            _mapper.Map(businessDto, business);
             await _businessRepository.Update(business);
-            //return _mapper.Map<BusinessReadDto?>(business);
-                        return true;
+            return ServiceResult<bool>.SuccessResult(true);
         }
 
-        public async Task<bool> DeleteAsync(int id)
+        public async Task<ServiceResult<bool>> DeleteAsync(int id)
         {
             var business = await _businessRepository.GetByIdAsync(id);
-            if (business == null) throw new ArgumentException("Business not found");
-           // await _businessRepository.Delete(business);
-            return true;
+            if (business == null)
+            {
+                return ServiceResult<bool>.FailResult("Business not found", StatusCodes.Status404NotFound);
+            }
+
+            //await _businessRepository.Delete(business);
+            return ServiceResult<bool>.SuccessResult(true);
         }
     }
 }

@@ -1,16 +1,17 @@
-﻿using proj1.Entity;
+﻿using proj1.Core;
+using proj1.Entity;
 
 namespace proj1.Service
 {
-    public interface IService<TReadDto, TCreateDto, TUpdateDto> 
+    public interface IService<TReadDto, TCreateDto, TUpdateDto>
     {
-        
 
-        Task<IEnumerable<TReadDto>> GetAllAsync();
-        Task<TReadDto?> GetByIdAsync(int id);
-        Task<TReadDto> CreateAsync(TCreateDto dto);
-        Task<bool> UpdateAsync(int id, TUpdateDto dto);
-        Task<bool> DeleteAsync(int id);
+
+        Task<ServiceResult<IEnumerable<TReadDto>>> GetAllAsync();
+        Task<ServiceResult<TReadDto>> GetByIdAsync(int id);
+        Task<ServiceResult<TReadDto>> CreateAsync(TCreateDto dto);
+        Task<ServiceResult<bool>> UpdateAsync(int id, TUpdateDto dto);
+        Task<ServiceResult<bool>> DeleteAsync(int id);
 
 
     }

@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\dtos\\relationsdtos\\relationscreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\dtos\\relationsdtos\\relationscreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\service\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\service\\iservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\dtos\\relationsdtos\\relationsreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\dtos\\relationsdtos\\relationsreaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\service\\business\\businessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\service\\business\\businessservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\dtos\\relationsdtos\\relationsupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\dtos\\relationsdtos\\relationsupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\controllers\\businesscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\service\\person\\personservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\service\\person\\personservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|c:\\users\\sarper2\\desktop\\intern-proj\\proj1\\proj1\\controllers\\personcontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4422F701-5594-376E-AA07-BA6673742B99}|proj1\\proj1.csproj|solutionrelative:proj1\\controllers\\personcontoller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,49 +34,88 @@
       "DocumentGroups": [
         {
           "DockedWidth": 191,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "IService.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Service\\IService.cs",
+              "RelativeDocumentMoniker": "proj1\\Service\\IService.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Service\\IService.cs",
+              "RelativeToolTip": "proj1\\Service\\IService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T09:01:26.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BusinessController.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Controllers\\BusinessController.cs",
+              "RelativeDocumentMoniker": "proj1\\Controllers\\BusinessController.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Controllers\\BusinessController.cs",
+              "RelativeToolTip": "proj1\\Controllers\\BusinessController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T08:57:25.718Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BusinessService.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Service\\Business\\BusinessService.cs",
+              "RelativeDocumentMoniker": "proj1\\Service\\Business\\BusinessService.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Service\\Business\\BusinessService.cs",
+              "RelativeToolTip": "proj1\\Service\\Business\\BusinessService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T08:56:41.262Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "proj1\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "proj1\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T08:56:22.778Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PersonServices.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Service\\Person\\PersonServices.cs",
+              "RelativeDocumentMoniker": "proj1\\Service\\Person\\PersonServices.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Service\\Person\\PersonServices.cs",
+              "RelativeToolTip": "proj1\\Service\\Person\\PersonServices.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBUAAAB7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T08:25:52.674Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RelationsUpdateDto.cs",
-              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
-              "RelativeDocumentMoniker": "proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
-              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
-              "RelativeToolTip": "proj1\\Dtos\\RelationsDtos\\RelationsUpdateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA3AAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "PersonContoller.cs",
+              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Controllers\\PersonContoller.cs",
+              "RelativeDocumentMoniker": "proj1\\Controllers\\PersonContoller.cs",
+              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Controllers\\PersonContoller.cs",
+              "RelativeToolTip": "proj1\\Controllers\\PersonContoller.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAArwCQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-11T06:42:08.646Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "RelationsReadDto.cs",
-              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
-              "RelativeDocumentMoniker": "proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
-              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
-              "RelativeToolTip": "proj1\\Dtos\\RelationsDtos\\RelationsReadDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA1AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-11T06:42:07.927Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RelationsCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
-              "RelativeDocumentMoniker": "proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
-              "ToolTip": "C:\\Users\\sarper2\\Desktop\\intern-proj\\proj1\\proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
-              "RelativeToolTip": "proj1\\Dtos\\RelationsDtos\\RelationsCreateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-11T06:42:07.21Z",
+              "WhenOpened": "2026-08-11T07:54:45.926Z",
               "EditorCaption": ""
             }
           ]
