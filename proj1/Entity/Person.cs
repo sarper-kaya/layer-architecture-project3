@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace proj1.Entity
 {
-    public class Person : BaseEntitySoftDelete
+    public class Person : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,8 +18,6 @@ namespace proj1.Entity
         public string? Surname { get; set; }
         public int Age { get; set; }
         public DateOnly Born { get; set; }
-         
-         
-         
+       
     }
 }

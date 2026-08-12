@@ -1,7 +1,12 @@
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using proj1.Data;
+using proj1.Dtos.BusinessDtos.BusinessDtoValidators;
+using proj1.Dtos.FamiliyDtos.FamilyDtoValidators;
+using proj1.Dtos.PersonDtos.PersonDtoValidators;
+using proj1.Dtos.RelationsDtos.RelationsDtoValidators;
 using proj1.Entity;
 using proj1.Repos;
 using proj1.Repos.BusinessRepos;
@@ -34,6 +39,17 @@ builder.Services.AddScoped<IPersonRepo, PersonRepository>();
 builder.Services.AddScoped<IBusinessRepo, BusinessRepository>();
 builder.Services.AddScoped<IFamilyRepo, FamilyRepository>();
 builder.Services.AddScoped<IRelationsRepo, RelationsRepository>();
+
+//validators
+builder.Services.AddValidatorsFromAssemblyContaining<PersonCreateDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<PersonUpdateDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<FamilyCreateDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<FamilyUpdateDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<RelationsCreateDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<RelationsUpdateDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<BusinessCreateDtoValidator>(); 
+builder.Services.AddValidatorsFromAssemblyContaining<BusinessUpdateDtoValidator>();
+
 
 var app = builder.Build();
 

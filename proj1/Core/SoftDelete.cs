@@ -2,11 +2,14 @@
 
 namespace proj1.Core
 {
-    public class SoftDelete<T>:BaseEntitySoftDelete
+    public static class SoftDelete<T> where T : ISoftDelete
     {
-        public T dbDeletion(T entity)
+
+
+        public static T dbDeletion(T entity)
         {
-            //entity.IsDeleted = true;
+            entity.IsDeleted = true;
+            entity.DeletedAt = DateOnly.FromDateTime(DateTime.UtcNow);
             return entity;
         }
     }
