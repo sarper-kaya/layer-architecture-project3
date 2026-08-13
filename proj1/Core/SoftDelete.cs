@@ -2,11 +2,11 @@
 
 namespace proj1.Core
 {
-    public static class SoftDelete<T> where T : ISoftDelete
+    public static class SoftDelete
     {
 
 
-        public static T dbDeletion(T entity)
+        public static T MarkAsDeleted<T>(this T entity) where T : ISoftDelete
         {
             entity.IsDeleted = true;
             entity.DeletedAt = DateOnly.FromDateTime(DateTime.UtcNow);

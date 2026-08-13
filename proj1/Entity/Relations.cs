@@ -20,11 +20,7 @@ namespace proj1.Entity
     }
     public enum RelationStatus
     {
-        Father,
-        Mother,
-        Child,
-        Friend,
-        Partner
+        
 
     }
 }
