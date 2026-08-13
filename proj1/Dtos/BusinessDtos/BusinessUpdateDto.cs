@@ -11,7 +11,7 @@ namespace proj1.Dtos.BusinessDtos
          
          
          
-        public ICollection<Person> Persons { get; set; } = new System.Collections.Generic.List<Person>();
+        //public ICollection<Person> Persons { get; set; } = new System.Collections.Generic.List<Person>();
 
     }
 }

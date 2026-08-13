@@ -1,4 +1,5 @@
-﻿using proj1.Entity;
+﻿using proj1.Dtos.PersonDtos;
+using proj1.Entity;
 
 namespace proj1.Dtos.FamiliyDtos
 {
@@ -9,6 +10,6 @@ namespace proj1.Dtos.FamiliyDtos
          
          
          
-        public ICollection<Person> Persons { get; set; } = new System.Collections.Generic.List<Person>();
+        //public ICollection<PersonReadDto> Persons { get; set; } = new System.Collections.Generic.List<PersonReadDto>();
     }
 }

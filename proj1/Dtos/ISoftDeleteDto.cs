@@ -6,4 +6,4 @@
         DateOnly DeletedAt { get; set; }
     }
 }
-}
+

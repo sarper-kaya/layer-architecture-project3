@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using proj1.Core;
-using proj1.Dtos.CustomResponseDtos;
 using proj1.Dtos.PersonDtos;
 using proj1.Entity;
 using proj1.Service;

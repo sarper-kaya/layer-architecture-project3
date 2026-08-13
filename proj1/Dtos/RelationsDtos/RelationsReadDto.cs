@@ -8,7 +8,7 @@ namespace proj1.Dtos.RelationsDtos
         public int RelationsWithId { get; set; }
         public RelationStatus Relation { get; set; }
         public int MainPersonId { get; set; }
-        public Person? Person { get; set; }
+        //public Person? Person { get; set; }
         public int RelationsWith { get; set; }
          
          

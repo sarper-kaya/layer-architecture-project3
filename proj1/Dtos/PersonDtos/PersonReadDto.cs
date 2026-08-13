@@ -1,4 +1,5 @@
-﻿using proj1.Entity;
+﻿using proj1.Dtos.RelationsDtos;
+using proj1.Entity;
 
 namespace proj1.Dtos.PersonDtos
 {
@@ -6,10 +7,10 @@ namespace proj1.Dtos.PersonDtos
     {
         public int Id { get; set; }
         public int FamilyId { get; set; }
-        public Family Family { get; set; } = null!; // required olabilir
+        //public Family Family { get; set; } = null!; // required olabilir
         public int BusinessId { get; set; }
-        public Business? Business { get; set; }
-        public ICollection<Relations> Relations { get; set; } = new List<Relations>();
+        //public Business? Business { get; set; }
+        public ICollection<RelationsReadDto> Relations { get; set; } = new List<RelationsReadDto>();
         public string? Name { get; set; }
         public string? Surname { get; set; }
         public int Age { get; set; }

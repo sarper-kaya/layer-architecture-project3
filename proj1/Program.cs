@@ -40,18 +40,27 @@ builder.Services.AddScoped<IBusinessRepo, BusinessRepository>();
 builder.Services.AddScoped<IFamilyRepo, FamilyRepository>();
 builder.Services.AddScoped<IRelationsRepo, RelationsRepository>();
 
+// Service kayıtları (EKSİK OLAN KISIM)
+builder.Services.AddScoped<IPersonService, PersonServices>();
+builder.Services.AddScoped<IBusinessService, BusinessService>();
+builder.Services.AddScoped<IFamilyService, FamilyService>();
+builder.Services.AddScoped<IRelationsServices, RelationsServices>();
+
 //validators
 builder.Services.AddValidatorsFromAssemblyContaining<PersonCreateDtoValidator>();
 
-
-
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 var app = builder.Build();
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 app.MapOpenApi();
 
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
 
 app.MapControllers();

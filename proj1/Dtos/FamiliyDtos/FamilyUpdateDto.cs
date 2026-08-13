@@ -9,6 +9,6 @@ namespace proj1.Dtos.FamiliyDtos
          
          
          
-        public ICollection<Person> Persons { get; set; } = new System.Collections.Generic.List<Person>();
+        //public ICollection<Person> Persons { get; set; } = new System.Collections.Generic.List<Person>();
     }
 }
