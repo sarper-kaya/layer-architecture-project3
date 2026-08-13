@@ -42,13 +42,7 @@ builder.Services.AddScoped<IRelationsRepo, RelationsRepository>();
 
 //validators
 builder.Services.AddValidatorsFromAssemblyContaining<PersonCreateDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<PersonUpdateDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<FamilyCreateDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<FamilyUpdateDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<RelationsCreateDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<RelationsUpdateDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<BusinessCreateDtoValidator>(); 
-builder.Services.AddValidatorsFromAssemblyContaining<BusinessUpdateDtoValidator>();
+
 
 
 var app = builder.Build();

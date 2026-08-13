@@ -24,8 +24,9 @@ namespace proj1.Repos.BusinessRepos
 
         public async Task<IEnumerable<Business>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
-        }
+            return await _dbSet.AsNoTracking().ToListAsync();
+        }//sadece list donen metotlarda tercih ettim
+        // cunku get by id metoduna bagli olarak update delete islemleri yapiyorum
 
         public async Task<Business?> GetByIdAsync(int id)
         {

@@ -4,7 +4,7 @@ using proj1.Entity;
 
 namespace proj1.Repos.PersonRepos
 {
-    public class PersonRepository:IPersonRepo
+    public class PersonRepository : IPersonRepo
     {
         protected readonly AppDbContext _context;
         private readonly DbSet<Person> _dbSet;
@@ -17,13 +17,14 @@ namespace proj1.Repos.PersonRepos
         {
             var entry = await _dbSet.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return entry.Entity; 
+            return entry.Entity;
 
         }
 
         public async Task<IEnumerable<Person>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync();
+
         }
 
         public async Task<Person?> GetByIdAsync(int id)

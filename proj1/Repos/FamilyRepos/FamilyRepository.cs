@@ -24,7 +24,7 @@ namespace proj1.Repos.FamilyRepos
 
         public async Task<IEnumerable<Family>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync();
         }
 
         public async Task<Family?> GetByIdAsync(int id)

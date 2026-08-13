@@ -24,7 +24,7 @@ namespace proj1.Repos.RelationsRepos
 
         public async Task<IEnumerable<Relations>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            return await _dbSet.AsNoTracking().ToListAsync();
         }
 
         public async Task<Relations?> GetByIdAsync(int id)
