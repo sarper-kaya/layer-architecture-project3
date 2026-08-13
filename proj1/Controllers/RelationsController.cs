@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using proj1.Core;
 using proj1.Dtos.CustomResponseDtos;
 using proj1.Dtos.RelationsDtos;
 using proj1.Entity;
@@ -18,42 +19,42 @@ namespace proj1.Controllers
         }
         [HttpGet]
         [HttpGet]
-        public async Task<ActionResult<ApiResponse<IEnumerable<RelationsReadDto>>>> GetAll()
+        public async Task<ActionResult<ServiceResult<IEnumerable<RelationsReadDto>>>> GetAll()
         {
             var result = await _relationsService.GetAllAsync();
-            var response = new ApiResponse<IEnumerable<RelationsReadDto>>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<IEnumerable<RelationsReadDto>>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ApiResponse<RelationsReadDto>>> Get(int id)
+        public async Task<ActionResult<ServiceResult<RelationsReadDto>>> Get(int id)
         {
             var result = await _relationsService.GetByIdAsync(id);
-            var response = new ApiResponse<RelationsReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<RelationsReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<RelationsReadDto>>> Post([FromBody] RelationsCreateDto relations)
+        public async Task<ActionResult<ServiceResult<RelationsReadDto>>> Post([FromBody] RelationsCreateDto relations)
         {
             var result = await _relationsService.CreateAsync(relations);
-            var response = new ApiResponse<RelationsReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<RelationsReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ApiResponse<bool>>> Put(int id, [FromBody] RelationsUpdateDto relations)
+        public async Task<ActionResult<ServiceResult<RelationsReadDto>>> Put(int id, [FromBody] RelationsUpdateDto relations)
         {
             var result = await _relationsService.UpdateAsync(id, relations);
-            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<RelationsReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ApiResponse<bool>>> Delete(int id)
+        public async Task<ActionResult<ServiceResult<RelationsReadDto>>> Delete(int id)
         {
             var result = await _relationsService.DeleteAsync(id);
-            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<RelationsReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
     }

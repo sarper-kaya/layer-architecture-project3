@@ -12,5 +12,11 @@ namespace proj1.Core
             entity.DeletedAt = DateOnly.FromDateTime(DateTime.UtcNow);
             return entity;
         }
+        public static T MarkAsNewRecord<T>(this T entity) where T : ISoftDelete
+        {
+            entity.IsDeleted = false;
+            entity.DeletedAt = DateOnly.MinValue;
+            return entity;
+        }
     }
 }

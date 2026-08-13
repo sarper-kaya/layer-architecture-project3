@@ -39,34 +39,39 @@ namespace proj1.Service.Family
         public async Task<ServiceResult<FamilyReadDto>> CreateAsync(FamilyCreateDto familyDto)
         {
             var newFamily = _mapper.Map<Entity.Family>(familyDto);
-            var savedFamily = await _familyRepository.AddAsync(newFamily);
+            newFamily = AuditEntityManagement.NewRecord(newFamily);
+            var savedFamily = await _familyRepository.AddAsync(SoftDelete.MarkAsNewRecord(newFamily));
             var dto = _mapper.Map<FamilyReadDto>(savedFamily);
             return ServiceResult<FamilyReadDto>.SuccessResult(dto, StatusCodes.Status201Created);
         }
 
-        public async Task<ServiceResult<bool>> UpdateAsync(int id, FamilyUpdateDto familyDto)
+        public async Task<ServiceResult<FamilyReadDto>> UpdateAsync(int id, FamilyUpdateDto familyDto)
         {
             var family = await _familyRepository.GetByIdAsync(id);
             if (family == null)
             {
-                return ServiceResult<bool>.FailResult("Family not found", StatusCodes.Status404NotFound);
-            }
+                return ServiceResult<FamilyReadDto>.FailResult("Family not found", StatusCodes.Status404NotFound);
+            }   
 
             _mapper.Map(familyDto, family);
-            await _familyRepository.Update(family);
-            return ServiceResult<bool>.SuccessResult(true);
+            family = AuditEntityManagement.UpdateRecord(family);
+            var updatedFamily = await _familyRepository.Update(family);
+            return ServiceResult<FamilyReadDto>.SuccessResult(_mapper.Map<FamilyReadDto>(updatedFamily));
         }
 
-        public async Task<ServiceResult<bool>> DeleteAsync(int id)
+        public async Task<ServiceResult<FamilyReadDto>> DeleteAsync(int id)
         {
             var family = await _familyRepository.GetByIdAsync(id);
             if (family == null)
             {
-                return ServiceResult<bool>.FailResult("Family not found", StatusCodes.Status404NotFound);
+                return ServiceResult<FamilyReadDto>.FailResult("Family not found", StatusCodes.Status404NotFound);
             }
 
-            await _familyRepository.Delete(family);
-            return ServiceResult<bool>.SuccessResult(true);
+            family = AuditEntityManagement.UpdateRecord(family);
+            family = SoftDelete.MarkAsDeleted(family);
+            var markedAsDeletedFamily = await _familyRepository.Update(family);
+
+            return ServiceResult<FamilyReadDto>.SuccessResult(_mapper.Map<FamilyReadDto>(markedAsDeletedFamily));
         }
 
 

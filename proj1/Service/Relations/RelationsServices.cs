@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using proj1.Core;
 using proj1.Dtos.RelationsDtos;
+using proj1.Entity;
 using proj1.Repos;
 using proj1.Repos.RelationsRepos;
 
@@ -44,29 +45,30 @@ namespace proj1.Service.Relations
             return ServiceResult<RelationsReadDto>.SuccessResult(dto);
         }
 
-        public async Task<ServiceResult<bool>> UpdateAsync(int id, RelationsUpdateDto relationDto)
+        public async Task<ServiceResult<RelationsReadDto>> UpdateAsync(int id, RelationsUpdateDto relationDto)
         {
             var relation = await _relationsRepository.GetByIdAsync(id);
             if (relation == null)
             {
-                return ServiceResult<bool>.FailResult("Relation not found", StatusCodes.Status404NotFound);
+                return ServiceResult<RelationsReadDto>.FailResult("Relation not found", StatusCodes.Status404NotFound);
             }
 
             _mapper.Map(relationDto, relation);
-            await _relationsRepository.Update(relation);
-            return ServiceResult<bool>.SuccessResult(true);
+            
+            var updatedRelation = await _relationsRepository.Update(AuditEntityManagement.UpdateRecord(relation));
+            return ServiceResult<RelationsReadDto>.SuccessResult(_mapper.Map<RelationsReadDto>(updatedRelation));
         }
 
-        public async Task<ServiceResult<bool>> DeleteAsync(int id)
+        public async Task<ServiceResult<RelationsReadDto>> DeleteAsync(int id)
         {
             var relation = await _relationsRepository.GetByIdAsync(id);
             if (relation == null)
             {
-                return ServiceResult<bool>.FailResult("Relation not found", StatusCodes.Status404NotFound);
+                return ServiceResult<RelationsReadDto>.FailResult("Relation not found", StatusCodes.Status404NotFound);
             }
-
-            await _relationsRepository.Delete(relation);
-            return ServiceResult<bool>.SuccessResult(true);
+            relation = AuditEntityManagement.UpdateRecord(relation);
+            var markedAsDeletedRelation = await _relationsRepository.Update(SoftDelete.MarkAsDeleted(relation));
+            return ServiceResult<RelationsReadDto>.SuccessResult(_mapper.Map<RelationsReadDto>(markedAsDeletedRelation));
         }
     }
 }

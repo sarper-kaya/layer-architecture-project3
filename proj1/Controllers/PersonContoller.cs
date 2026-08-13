@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using proj1.Core;
 using proj1.Dtos.CustomResponseDtos;
 using proj1.Dtos.PersonDtos;
 using proj1.Entity;
@@ -26,35 +27,35 @@ namespace proj1.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ApiResponse<PersonReadDto>>> GetById(int id)
+        public async Task<ActionResult<ServiceResult<PersonReadDto>>> GetById(int id)
         {
             var item = await _personService.GetByIdAsync(id);
 
-            var response = new ApiResponse<PersonReadDto>(item.Data, item.Message, item.Success, item.StatusCode);
+            var response = new ServiceResult<PersonReadDto>(item.Data, item.Message, item.Success, item.StatusCode);
 
             return StatusCode(item.StatusCode, response);
         }
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<PersonReadDto>>> Create([FromBody] PersonCreateDto personDto)
+        public async Task<ActionResult<ServiceResult<PersonReadDto>>> Create([FromBody] PersonCreateDto personDto)
         {
             var created = await _personService.CreateAsync(personDto);
-            var response = new ApiResponse<PersonReadDto>(created.Data, created.Message, created.Success, created.StatusCode);
+            var response = new ServiceResult<PersonReadDto>(created.Data, created.Message, created.Success, created.StatusCode);
             return StatusCode(created.StatusCode, response);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ApiResponse<bool>>> Update(int id, [FromBody] PersonUpdateDto personDto)
+        public async Task<ActionResult<ServiceResult<PersonReadDto>>> Update(int id, [FromBody] PersonUpdateDto personDto)
         {
             var result = await _personService.UpdateAsync(id, personDto);
-            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<PersonReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ApiResponse<bool>>> Delete(int id)
+        public async Task<ActionResult<ServiceResult<PersonReadDto>>> Delete(int id)
         {
             var result = await _personService.DeleteAsync(id);
-            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<PersonReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 

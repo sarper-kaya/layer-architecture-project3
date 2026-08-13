@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using proj1.Core;
 using proj1.Dtos.BusinessDtos;
-using proj1.Dtos.CustomResponseDtos;
+
 using proj1.Dtos.FamiliyDtos;
 using proj1.Entity;
 using proj1.Service.Family;
@@ -18,42 +19,42 @@ namespace proj1.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ApiResponse<IEnumerable<FamilyReadDto>>>> GetAll()
+        public async Task<ActionResult<ServiceResult<IEnumerable<FamilyReadDto>>>> GetAll()
         {
             var result = await _familyService.GetAllAsync();
-            var response = new ApiResponse<IEnumerable<FamilyReadDto>>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<IEnumerable<FamilyReadDto>>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ApiResponse<FamilyReadDto>>> Get(int id)
+        public async Task<ActionResult<ServiceResult<FamilyReadDto>>> Get(int id)
         {
             var result = await _familyService.GetByIdAsync(id);
-            var response = new ApiResponse<FamilyReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<FamilyReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<FamilyReadDto>>> Post([FromBody] FamilyCreateDto family)
+        public async Task<ActionResult<ServiceResult<FamilyReadDto>>> Post([FromBody] FamilyCreateDto family)
         {
             var result = await _familyService.CreateAsync(family);
-            var response = new ApiResponse<FamilyReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<FamilyReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<ApiResponse<bool>>> Put(int id, [FromBody] FamilyUpdateDto family)
+        public async Task<ActionResult<ServiceResult<FamilyReadDto>>> Put(int id, [FromBody] FamilyUpdateDto family)
         {
             var result = await _familyService.UpdateAsync(id, family);
-            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<FamilyReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<ApiResponse<bool>>> Delete(int id)
+        public async Task<ActionResult<ServiceResult<FamilyReadDto>>> Delete(int id)
         {
             var result = await _familyService.DeleteAsync(id);
-            var response = new ApiResponse<bool>(result.Data, result.Message, result.Success, result.StatusCode);
+            var response = new ServiceResult<FamilyReadDto>(result.Data, result.Message, result.Success, result.StatusCode);
             return StatusCode(result.StatusCode, response);
         }
     }

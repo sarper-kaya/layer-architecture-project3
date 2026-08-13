@@ -7,7 +7,7 @@
         public string? Message { get; set; }
         public int StatusCode { get; set; }
 
-        public static ServiceResult<T> SuccessResult(T data, int statusCode = StatusCodes.Status200OK)
+        public  static ServiceResult<T> SuccessResult(T data, int statusCode = StatusCodes.Status200OK)
         {
             return new ServiceResult<T>
             {
@@ -26,6 +26,17 @@
                 Message = message,
                 StatusCode = statusCode
             };
+        }
+        public ServiceResult(T? data, string? message, bool success, int statusCode)
+        {
+            Data = data;
+            Message = message;
+            Success = success;
+            StatusCode = statusCode;
+        }
+        public ServiceResult()
+        {
+            
         }
     }
 }

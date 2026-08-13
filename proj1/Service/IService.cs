@@ -10,8 +10,8 @@ namespace proj1.Service
         Task<ServiceResult<IEnumerable<TReadDto>>> GetAllAsync();
         Task<ServiceResult<TReadDto>> GetByIdAsync(int id);
         Task<ServiceResult<TReadDto>> CreateAsync(TCreateDto dto);
-        Task<ServiceResult<bool>> UpdateAsync(int id, TUpdateDto dto);
-        Task<ServiceResult<bool>> DeleteAsync(int id);
+        Task<ServiceResult<TReadDto>> UpdateAsync(int id, TUpdateDto dto);
+        Task<ServiceResult<TReadDto>> DeleteAsync(int id);
 
 
     }

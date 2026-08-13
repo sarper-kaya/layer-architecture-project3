@@ -39,34 +39,52 @@ namespace proj1.Service.Person
         public async Task<ServiceResult<PersonReadDto>> CreateAsync(PersonCreateDto personDto)
         {
             var newPerson = _mapper.Map<Entity.Person>(personDto);
-            var savedPerson = await _personRepository.AddAsync(newPerson);
-            if (savedPerson == null) 
-            { 
+            var markedNewPerson = SoftDelete.MarkAsNewRecord(newPerson);
+            markedNewPerson = AuditEntityManagement.NewRecord(markedNewPerson);
+            var savedPerson = await _personRepository.AddAsync(markedNewPerson);
+            if (savedPerson == null)
+            {
                 return ServiceResult<PersonReadDto>.FailResult("Failed to create person", StatusCodes.Status500InternalServerError);
             }
             return ServiceResult<PersonReadDto>.SuccessResult(_mapper.Map<PersonReadDto>(savedPerson));
         }
 
 
-        public async Task<ServiceResult<bool>> UpdateAsync(int id, PersonUpdateDto dto)
+        public async Task<ServiceResult<PersonReadDto>> UpdateAsync(int id, PersonUpdateDto dto)
         {
             var entity = await _personRepository.GetByIdAsync(id);
-            if (entity is null) return ServiceResult<bool>.FailResult("Person not found", StatusCodes.Status404NotFound);
+            if (entity == null)
+            {
+                return ServiceResult<PersonReadDto>.FailResult("Person not found", StatusCodes.Status404NotFound);
+            }
 
             _mapper.Map(dto, entity);
-            //return await _personRepository.Update(entity);
-            return ServiceResult<bool>.SuccessResult(true);
+            entity = AuditEntityManagement.UpdateRecord(entity);
+            var updatedEntity = await _personRepository.Update(entity);
+            return ServiceResult<PersonReadDto>.SuccessResult(_mapper.Map<PersonReadDto>(updatedEntity));
+
         }
 
-        public async Task<ServiceResult<bool>> DeleteAsync(int id)
+        public async Task<ServiceResult<PersonReadDto>> DeleteAsync(int id)
         {
             var person = await _personRepository.GetByIdAsync(id);
-            if (person == null) return ServiceResult<bool>.FailResult("Person not found", StatusCodes.Status404NotFound);
 
-            //return await _personRepository.Delete(person);
-            return ServiceResult<bool>.SuccessResult(true);
+            if (person == null)
+            {
+                return ServiceResult<PersonReadDto>.FailResult("Person not found", StatusCodes.Status404NotFound);
+            }
+            else
+            {
+                person = AuditEntityManagement.UpdateRecord(person);
+                person = SoftDelete.MarkAsDeleted(person);
+                var markedAsDeletedPerson = await _personRepository.Update(person);
+                return ServiceResult<PersonReadDto>.SuccessResult(_mapper.Map<PersonReadDto>(markedAsDeletedPerson));
+            }
+
+
+
         }
 
-    
+
     }
 }
